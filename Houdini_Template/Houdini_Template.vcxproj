@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AttributeContainer.h" />
+    <ClInclude Include="FileSections.h" />
+    <ClInclude Include="PRTFile.h" />
+    <ClInclude Include="PRT_RopDriver.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PRT_RopDriver.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B917BE05-B5B0-435F-A303-C6FA52D31567}</ProjectGuid>
+    <RootNamespace>Houdini_Template</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>PRTRop</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.50727.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(USERPROFILE)\Documents\houdini16.5\dso\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>false</GenerateManifest>
+    <TargetName>$(ProjectName)_%HOUDINI_VERSION%</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;HOUDINI_TEMPLATE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>-TP 
+-Zc:forScope 
+-nologo
+
+-DVERSION="$(HOUDINI_VERSION)" 
+-DI386 
+-DWIN32 
+-DSWAP_BITFIELDS 
+-D_WIN32_WINNT=0x0501 
+-DWINVER=0x0501 
+-DNOMINMAX 
+-D_USE_MATH_DEFINES 
+-D_CRT_SECURE_NO_DEPRECATE 
+-D_CRT_NONSTDC_NO_DEPRECATE 
+-D_SCL_SECURE_NO_WARNINGS 
+-DBOOST_ALL_NO_LIB 
+ 
+-I . 
+-I "$(VS2012)/VC/include" 
+-I "c:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Lib\x64\Include" 
+-I "$(HOUDINI_PATH)/toolkit/include" 
+
+-MD 
+-EHsc 
+-GR 
+-bigobj 
+-wd4355 
+-w14996 
+-DSESI_LITTLE_ENDIAN 
+-DAMD64 
+-DSIZEOF_VOID_P=8 
+-DFBX_ENABLED=1 
+-DOPENCL_ENABLED=1 
+-DOPENVDB_ENABLED=1 
+-DMAKING_DSO  %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalOptions>/libpath:"$(VS2012)\VC\lib\amd64" 
+/libpath:"c:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Lib\x64"  
+"$(HOUDINI_PATH)\custom\houdini\dsolib\*.a" 
+"$(HOUDINI_PATH)\custom\houdini\dsolib\*.lib" %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>-TP 
+-Zc:forScope 
+-nologo
+
+-DVERSION="$(HOUDINI_VERSION)" 
+-DI386 
+-DWIN32 
+-DSWAP_BITFIELDS 
+-D_WIN32_WINNT=0x0501 
+-DWINVER=0x0501 
+-DNOMINMAX 
+-D_USE_MATH_DEFINES 
+-D_CRT_SECURE_NO_DEPRECATE 
+-D_CRT_NONSTDC_NO_DEPRECATE 
+-D_SCL_SECURE_NO_WARNINGS 
+-DBOOST_ALL_NO_LIB 
+ 
+-I . 
+-I "$(VS2012)/VC/include" 
+-I "c:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Lib\x64\Include" 
+-I "$(HOUDINI_PATH)/toolkit/include" 
+
+-MD 
+-EHsc 
+-GR 
+-bigobj 
+-wd4355 
+-w14996 
+-DSESI_LITTLE_ENDIAN 
+-DAMD64 
+-DSIZEOF_VOID_P=8 
+-DFBX_ENABLED=1 
+-DOPENCL_ENABLED=1 
+-DOPENVDB_ENABLED=1 
+-DMAKING_DSO  %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>%HOUDINI%\toolkit\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;MAKING_DSO;_WINDOWS;_USRDLL;_USE_MATH_DEFINES;PATHDEFORMER_EXPORTS;SESI_LITTLE_ENDIAN;HBOOST_ALL_NO_LIB;UT_ASSERT_LEVEL=2;SWAP_BITFIELDS;NOMINMAX;STRICT;SIZEOF_VOID_P=8;WIN32_LEAN_AND_MEAN;AMD64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;OPENCL_ENABLED=1;VERSION="16.5.268";I386;_WIN32_WINNT=0x603;WINVER=0x603;HOUDINI_TEMPLATE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/libpath:"c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\lib\amd64" 
+/libpath:"c:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Lib\x64"  
+"%HOUDINI%\custom\houdini\dsolib\*.a" 
+"%HOUDINI%\custom\houdini\dsolib\*.lib" %(AdditionalOptions)</AdditionalOptions>
+      <OutputFile>$(OutDir)$(ProjectName)_%HOUDINI_VERSION%.dll</OutputFile>
+      <AdditionalLibraryDirectories>%HOUDINI%\custom\houdini\dsolib;C:\Program Files\Side Effects Software\Houdini 16.5.268\custom\houdini\dsolib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX64</TargetMachine>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <AdditionalDependencies>"C:\Program Files\Side Effects Software\Houdini 16.5.268\custom\houdini\dsolib\libGA.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
