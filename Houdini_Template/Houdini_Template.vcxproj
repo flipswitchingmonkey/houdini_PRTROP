@@ -26,18 +26,18 @@
     <RootNamespace>Houdini_Template</RootNamespace>
     <Keyword>Win32Proj</Keyword>
     <ProjectName>PRTRop</ProjectName>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -59,7 +59,7 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(USERPROFILE)\Documents\houdini16.5\dso\</OutDir>
+    <OutDir>$(USERPROFILE)\Documents\houdini17.5\dso\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
@@ -167,19 +167,15 @@
 -DOPENVDB_ENABLED=1 
 -DMAKING_DSO  %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>%HOUDINI%\toolkit\include;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;MAKING_DSO;_WINDOWS;_USRDLL;_USE_MATH_DEFINES;PATHDEFORMER_EXPORTS;SESI_LITTLE_ENDIAN;HBOOST_ALL_NO_LIB;UT_ASSERT_LEVEL=2;SWAP_BITFIELDS;NOMINMAX;STRICT;SIZEOF_VOID_P=8;WIN32_LEAN_AND_MEAN;AMD64;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;OPENCL_ENABLED=1;VERSION="16.5.268";I386;_WIN32_WINNT=0x603;WINVER=0x603;HOUDINI_TEMPLATE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;STRICT;NDEBUG;MAKING_DSO;_WINDOWS;_USRDLL;_USE_MATH_DEFINES;PATHDEFORMER_EXPORTS;SESI_LITTLE_ENDIAN;HBOOST_ALL_NO_LIB;UT_ASSERT_LEVEL=2;SWAP_BITFIELDS;NOMINMAX;SIZEOF_VOID_P=8;WIN32_LEAN_AND_MEAN;AMD64;EIGEN_MALLOC_ALREADY_ALIGNED=0;FBX_ENABLED=1;OPENCL_ENABLED=1;OPENVDB_ENABLED=1;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;VERSION="16.5.268";I386;_WIN32_WINNT=0x603;WINVER=0x603;HOUDINI_TEMPLATE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader />
-      <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level1</WarningLevel>
+      <DebugInformationFormat>None</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalOptions>/libpath:"c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\lib\amd64" 
-/libpath:"c:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Lib\x64"  
-"%HOUDINI%\custom\houdini\dsolib\*.a" 
-"%HOUDINI%\custom\houdini\dsolib\*.lib" %(AdditionalOptions)</AdditionalOptions>
       <OutputFile>$(OutDir)$(ProjectName)_%HOUDINI_VERSION%.dll</OutputFile>
-      <AdditionalLibraryDirectories>%HOUDINI%\custom\houdini\dsolib;C:\Program Files\Side Effects Software\Houdini 16.5.268\custom\houdini\dsolib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%HOUDINI%\custom\houdini\dsolib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -188,8 +184,9 @@
       <DataExecutionPrevention />
       <TargetMachine>MachineX64</TargetMachine>
       <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
-      <AdditionalDependencies>"C:\Program Files\Side Effects Software\Houdini 16.5.268\custom\houdini\dsolib\libGA.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%HOUDINI%\custom\houdini\dsolib\*.lib;%HOUDINI%\custom\houdini\dsolib\*.a;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>NotSet</ShowProgress>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
