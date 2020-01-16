@@ -1,0 +1,1 @@
+hcustom -I "C:\Program Files(x86)\Microsoft SDKs\Windows\v10.0A\Include" -I "%HOUDINI%\toolkit\include\zlib" -I "%HOUDINI%\toolkit\include\OpenEXR" Houdini_Template/PRT_RopDriver.cpp

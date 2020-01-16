@@ -216,3 +216,6 @@ FakesAssemblies/
 **/*.Server/GeneratedArtifacts
 **/*.Server/ModelManifest.xml
 _Pvt_Extensions
+Houdini_Template/PRT_RopDriver.o
+Houdini_Template/PRT_RopDriver.exp
+Houdini_Template/PRT_RopDriver.lib

@@ -1,6 +1,6 @@
 Installation is straight forward: just download the zip from the Releases page on the repo, then unzip the .dll file into your houdini's profile dso folder. On Windows that folder is most likely somewhere like this: 
 
-``c:\Users\yourusername\Documents\houdini17.5\dso\``
+``c:\Users\yourusername\Documents\houdini18.0\dso\``
 
 If the "dso" folder does not exist yet, just create it. Then drop the PRT_RopDriver.dll in there and start Houdini. You can then create a PRT_ROPDriver ROP node in the Outputs.
 
@@ -25,14 +25,12 @@ To build :
 - Clone this repo 
 - Open houdini Command Line Tools
 - cd to this folder
-- call  hcustom -I "C:\Program Files\Microsoft SDKs\Windows\v6.0A\Include" -I "C:\Program Files\Side Effects Software\Houdini 12.1.125\toolkit\include\zlib" -I "C:\Program Files\Side Effects Software\Houdini 12.1.125\toolkit\include\OpenEXR" PRT_RopDriver.cpp
+- call hcustom -I "C:\Program Files(x86)\Microsoft SDKs\Windows\v10.0A\Include" -I "c:\Program Files\Side Effects Software\Houdini 18.0.287\toolkit\include\zlib" -I "c:\Program Files\Side Effects Software\Houdini 18.0.287\toolkit\include\OpenEXR" Houdini_Template/PRT_RopDriver.cpp
 
-Viola!
+If hcustom can't find MSVC, you have to set the environment variable to something like:
+MSVCDir=c:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023
 
+To use compiled version:
 
-To use compiled version (12.185) :
-
-- Clone this repo
-- Checkout "compiled" branch
-- Copy PRT_RopDriver.dll to Houdini DSO folder 
+- Download release for your version and unzip into Documents/houdinigXX.0/dso folder
 

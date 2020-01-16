@@ -10,16 +10,17 @@
 #define PRT_RopDriver_PRT_RopDriver_h
 
 #include <ROP/ROP_Node.h>
+#include <OP/OP_OperatorPair.h>
 
 class PRT_RopDriver : public ROP_Node
 {
     
 public:
+
+    static OP_TemplatePair* getTemplatePair();
+    static OP_VariablePair* getVariablePair();
     
-    static OP_TemplatePair      *getTemplatePair();
-    static OP_VariablePair      *getVariablePair();
-    
-    static OP_Node              *nodeConstructor( OP_Network *net, const char *name, OP_Operator *op );
+    static OP_Node *nodeConstructor( OP_Network *net, const char *name, OP_Operator *op );
     
 protected:
     

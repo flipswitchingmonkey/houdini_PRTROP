@@ -38,6 +38,7 @@
 #include <PRM/PRM_ChoiceList.h>
 
 #include <OP/OP_OperatorTable.h>
+#include <OP/OP_OperatorPair.h>
 #include <OP/OP_Director.h>
 
 #include <SOP/SOP_Node.h>
@@ -328,7 +329,7 @@ static PRM_Template * getTemplates()
 
 /******* PRT_RopDriver IMPL ******/
 
-OP_TemplatePair * PRT_RopDriver::getTemplatePair()
+OP_TemplatePair *PRT_RopDriver::getTemplatePair()
 {
     static OP_TemplatePair *ropPair     = 0;
     
@@ -342,7 +343,7 @@ OP_TemplatePair * PRT_RopDriver::getTemplatePair()
     return ropPair;
 };
 
-OP_VariablePair * PRT_RopDriver::getVariablePair()
+OP_VariablePair *PRT_RopDriver::getVariablePair()
 {
     static OP_VariablePair *varPair     = 0;
     
