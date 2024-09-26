@@ -12,7 +12,23 @@
 #include <cstdint>
 
 #ifdef ENABLE_HALF
-    #include <OpenEXR/half.h>
+    // This is taken from the OpenEXR Porting guide https://openexr.com/en/latest/PortingGuide.html#id2:
+    // The version can reliably be found in this header file from OpenEXR,
+    // for both 2.x and 3.x:
+    #include <OpenEXR/OpenEXRConfig.h>
+    #define COMBINED_OPENEXR_VERSION ((10000*OPENEXR_VERSION_MAJOR) + \
+                                      (100*OPENEXR_VERSION_MINOR) + \
+                                      OPENEXR_VERSION_PATCH)
+
+    // There's just no easy way to have an ``#include`` that works in both
+    // cases, so we use the version to switch which set of include files we
+    // use.
+    #if COMBINED_OPENEXR_VERSION >= 20599 /* 2.5.99: pre-3.0 */
+    #   include <Imath/half.h>
+    #else
+        // OpenEXR 2.x, use the old locations
+    #   include <OpenEXR/half.h>
+    #endif
 #endif
 
 namespace PRTFile {
