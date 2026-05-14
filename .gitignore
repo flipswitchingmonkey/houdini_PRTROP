@@ -219,3 +219,9 @@ _Pvt_Extensions
 Houdini_Template/PRT_RopDriver.o
 Houdini_Template/PRT_RopDriver.exp
 Houdini_Template/PRT_RopDriver.lib
+
+# macOS build artifacts
+Houdini_Template/dist/
+Houdini_Template/*.dylib
+Houdini_Template/*.o
+.DS_Store
